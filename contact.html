@@ -1,1 +1,634 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Kids-Teach-Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links .join-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4ecdc4;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #4ecdc4;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-icon {
+            font-size: 2em;
+            background: #ff6b6b;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .info-content h3 {
+            color: #ff6b6b;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .info-content p {
+            color: #555;
+        }
+
+        .info-content a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+
+        .info-content a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            background: #ff6b6b;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            background: #ff5252;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #ff5252;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-container {
+            margin-top: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e0e0e0;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: #666;
+        }
+
+        .map-placeholder span {
+            font-size: 3em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .office-hours {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .hours-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .hours-day {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .hours-time {
+            color: #555;
+        }
+
+        .emergency-box {
+            background: #fff3f3;
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .emergency-box h3 {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .emergency-number {
+            font-size: 2em;
+            color: #333;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .faq-item h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                margin: 5px 10px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="logo">🎓 Kids-Teach-Kids</a>
+        <div class="nav-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+            <a href="join.html" class="join-btn">Join Now</a>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Contact Us</h1>
+        <p>We're here to help! Reach out anytime</p>
+    </div>
+
+    <div class="container">
+        <div class="emergency-box">
+            <h3>🚨 24/7 Emergency Support</h3>
+            <p>For immediate safety concerns or emergencies:</p>
+            <div class="emergency-number">📞 1-800-KTK-SAFE</div>
+            <p>📧 emergency@kids-teach-kids.com</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Available 24 hours a day, 7 days a week</p>
+        </div>
+
+        <div class="card">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h3>Visit Us</h3>
+                            <p>123 Learning Lane<br>Suite 100<br>San Francisco, CA 94105</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <h3>Call Us</h3>
+                            <p>Main: (555) 123-4567</p>
+                            <p>Parent Support: (555) 123-4568</p>
+                            <p>Teacher Support: (555) 123-4569</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div class="info-content">
+                            <h3>Email Us</h3>
+                            <p>General: <a href="mailto:hello@kids-teach-kids.com">hello@kids-teach-kids.com</a></p>
+                            <p>Support: <a href="mailto:support@kids-teach-kids.com">support@kids-teach-kids.com</a></p>
+                            <p>Safety: <a href="mailto:safety@kids-teach-kids.com">safety@kids-teach-kids.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">⏰</div>
+                        <div class="info-content">
+                            <h3>Office Hours</h3>
+                            <p>Monday - Friday: 9am - 6pm PST</p>
+                            <p>Saturday: 10am - 4pm PST</p>
+                            <p>Sunday: Closed (Emergency only)</p>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #ff6b6b; margin: 20px 0 10px;">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">🎵</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send a Message</h2>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! We\'ll get back to you within 24 hours.'); this.reset();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name *</label>
+                                <input type="text" required placeholder="Your first name">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Your last name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required placeholder="your@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone (Optional)</label>
+                            <input type="tel" placeholder="(555) 123-4567">
+                        </div>
+
+                        <div class="form-group">
+                            <label>I am a... *</label>
+                            <select required>
+                                <option value="">Select one</option>
+                                <option>Parent</option>
+                                <option>Student (with parent permission)</option>
+                                <option>Potential Teacher</option>
+                                <option>School/Organization</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <select required>
+                                <option value="">Select a topic</option>
+                                <option>General Question</option>
+                                <option>Billing Question</option>
+                                <option>Technical Support</option>
+                                <option>Safety Concern</option>
+                                <option>Teacher Application</option>
+                                <option>Class Schedule</option>
+                                <option>Partnership Opportunity</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea rows="5" required placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="urgent">
+                            <label for="urgent" style="margin: 0;">This is urgent/emergency (call us instead!)</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message 📨</button>
+                    </form>
+
+                    <p style="margin-top: 15px; color: #666; font-size: 0.9em;">We typically respond within 24 hours. For emergencies, please call our 24/7 hotline.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Office Hours</h2>
+            <div class="office-hours">
+                <div class="hours-item">
+                    <div class="hours-day">Monday</div>
+                    <div class="hours-time">9am - 6pm</div>
+                </div>
+                <div class="hours-item">
+                    <div class="hours-day">Tuesday</div>
+                    <div class="hours-time">9am - 6pm</div>
+                </div>
+                <div class="hours-item">
+                    <div class="hours-day">Wednesday</div>
+                    <div class="hours-time">9am - 6pm</div>
+                </div>
+                <div class="hours-item">
+                    <div class="hours-day">Thursday</div>
+                    <div class="hours-time">9am - 6pm</div>
+                </div>
+                <div class="hours-item">
+                    <div class="hours-day">Friday</div>
+                    <div class="hours-time">9am - 6pm</div>
+                </div>
+                <div class="hours-item">
+                    <div class="hours-day">Saturday</div>
+                    <div class="hours-time">10am - 4pm</div>
+                </div>
+                <div class="hours-item">
+                    <div class="hours-day">Sunday</div>
+                    <div class="hours-time">Emergency Only</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #666;">All hours are Pacific Time (PT)</p>
+        </div>
+
+        <div class="card">
+            <h2>Quick Answers</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How do I sign up?</h4>
+                    <p>Click the "Join Now" button and follow the registration steps. Parents must approve all accounts.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What if I have billing questions?</h4>
+                    <p>Email billing@kids-teach-kids.com or call (555) 123-4568 during business hours.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I report a problem?</h4>
+                    <p>For non-emergencies, use this contact form. For emergencies, call our 24/7 hotline.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I schedule a call?</h4>
+                    <p>Yes! Use this form to request a call, and we'll schedule a time that works for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Find Us</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <span>🗺️</span>
+                    <h3>123 Learning Lane, Suite 100</h3>
+                    <p>San Francisco, CA 94105</p>
+                    <p style="margin-top: 10px;">(Interactive map coming soon!)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html" class="logo" style="color: white; text-decoration: none;">🎓 Kids-Teach-Kids</a>
+        <p>Empowering the next generation through peer learning</p>
+        
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kids-Teach-Kids. All rights reserved.</p>
+        <p style="font-size: 0.9em; opacity: 0.5;">Made with ❤️ for young learners everywhere</p>
+    </div>
+</body>
+</html>
