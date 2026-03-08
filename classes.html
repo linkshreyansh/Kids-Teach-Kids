@@ -1,1 +1,622 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - Kids-Teach-Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links .join-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4ecdc4;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #4ecdc4;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #f0f0f0;
+            color: #555;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .class-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b6b;
+        }
+
+        .class-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 3em;
+        }
+
+        .class-body {
+            padding: 25px;
+        }
+
+        .class-body h3 {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .class-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .class-meta span {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        .class-description {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .teacher-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 10px;
+        }
+
+        .teacher-avatar {
+            width: 40px;
+            height: 40px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .class-btn {
+            display: inline-block;
+            background: #4ecdc4;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            width: 100%;
+            text-align: center;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .class-btn:hover {
+            background: #45b7aa;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                margin: 5px 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="logo">🎓 Kids-Teach-Kids</a>
+        <div class="nav-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+            <a href="join.html" class="join-btn">Join Now</a>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Our Classes</h1>
+        <p>Find the perfect class taught by amazing kid teachers</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Browse Classes</h2>
+            
+            <div class="filter-section">
+                <button class="filter-btn active" onclick="filterClasses('all')">All</button>
+                <button class="filter-btn" onclick="filterClasses('math')">Math</button>
+                <button class="filter-btn" onclick="filterClasses('art')">Art</button>
+                <button class="filter-btn" onclick="filterClasses('coding')">Coding</button>
+                <button class="filter-btn" onclick="filterClasses('music')">Music</button>
+                <button class="filter-btn" onclick="filterClasses('science')">Science</button>
+                <button class="filter-btn" onclick="filterClasses('writing')">Writing</button>
+            </div>
+
+            <div class="classes-grid" id="classesGrid">
+                <!-- Math Classes -->
+                <div class="class-card" data-category="math">
+                    <div class="class-header">📚</div>
+                    <div class="class-body">
+                        <h3>Math Magic</h3>
+                        <div class="class-meta">
+                            <span>Ages 7-10</span>
+                            <span>4 weeks</span>
+                            <span>Beginner</span>
+                        </div>
+                        <p class="class-description">Learn multiplication tricks, fun puzzles, and math games that make numbers exciting!</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">🧒</div>
+                            <div>
+                                <strong>Taught by Emma, age 11</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.9 (24 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="math">
+                    <div class="class-header">🧮</div>
+                    <div class="class-body">
+                        <h3>Algebra Adventures</h3>
+                        <div class="class-meta">
+                            <span>Ages 11-14</span>
+                            <span>6 weeks</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <p class="class-description">Master variables, equations, and word problems with easy-to-understand explanations.</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">👦</div>
+                            <div>
+                                <strong>Taught by James, age 14</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.8 (18 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Art Classes -->
+                <div class="class-card" data-category="art">
+                    <div class="class-header">🎨</div>
+                    <div class="class-body">
+                        <h3>Drawing for Beginners</h3>
+                        <div class="class-meta">
+                            <span>Ages 6-9</span>
+                            <span>4 weeks</span>
+                            <span>Beginner</span>
+                        </div>
+                        <p class="class-description">Learn to draw animals, cartoons, and your favorite characters step by step!</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">👧</div>
+                            <div>
+                                <strong>Taught by Sophia, age 10</strong>
+                                <p style="font-size: 0.9em;">⭐ 5.0 (32 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="art">
+                    <div class="class-header">🖌️</div>
+                    <div class="class-body">
+                        <h3>Anime & Manga Art</h3>
+                        <div class="class-meta">
+                            <span>Ages 10-15</span>
+                            <span>5 weeks</span>
+                            <span>All levels</span>
+                        </div>
+                        <p class="class-description">Create amazing anime characters, learn expressions, and develop your own art style.</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">🧑</div>
+                            <div>
+                                <strong>Taught by Mika, age 13</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.9 (27 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Coding Classes -->
+                <div class="class-card" data-category="coding">
+                    <div class="class-header">💻</div>
+                    <div class="class-body">
+                        <h3>Scratch Programming</h3>
+                        <div class="class-meta">
+                            <span>Ages 8-11</span>
+                            <span>6 weeks</span>
+                            <span>Beginner</span>
+                        </div>
+                        <p class="class-description">Create your own games and animations with Scratch - no coding experience needed!</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">👦</div>
+                            <div>
+                                <strong>Taught by Alex, age 12</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.8 (21 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="coding">
+                    <div class="class-header">🤖</div>
+                    <div class="class-body">
+                        <h3>Python for Kids</h3>
+                        <div class="class-meta">
+                            <span>Ages 12-16</span>
+                            <span>8 weeks</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <p class="class-description">Learn real programming with Python - build games, calculators, and cool projects.</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">🧑</div>
+                            <div>
+                                <strong>Taught by Ryan, age 15</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.7 (15 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Music Classes -->
+                <div class="class-card" data-category="music">
+                    <div class="class-header">🎵</div>
+                    <div class="class-body">
+                        <h3>Ukulele for Kids</h3>
+                        <div class="class-meta">
+                            <span>Ages 7-12</span>
+                            <span>5 weeks</span>
+                            <span>Beginner</span>
+                        </div>
+                        <p class="class-description">Learn chords, strumming patterns, and play your favorite songs on ukulele.</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">👧</div>
+                            <div>
+                                <strong>Taught by Lily, age 11</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.9 (19 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="music">
+                    <div class="class-header">🎹</div>
+                    <div class="class-body">
+                        <h3>Piano Basics</h3>
+                        <div class="class-meta">
+                            <span>Ages 8-14</span>
+                            <span>6 weeks</span>
+                            <span>Beginner</span>
+                        </div>
+                        <p class="class-description">Learn notes, simple songs, and have fun making music on the piano.</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">🧒</div>
+                            <div>
+                                <strong>Taught by Ethan, age 13</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.8 (22 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Science Classes -->
+                <div class="class-card" data-category="science">
+                    <div class="class-header">🔬</div>
+                    <div class="class-body">
+                        <h3>Cool Science Experiments</h3>
+                        <div class="class-meta">
+                            <span>Ages 8-12</span>
+                            <span>4 weeks</span>
+                            <span>All levels</span>
+                        </div>
+                        <p class="class-description">Make volcanoes, slime, and other amazing experiments at home!</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">👦</div>
+                            <div>
+                                <strong>Taught by Noah, age 12</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.9 (28 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="science">
+                    <div class="class-header">🌌</div>
+                    <div class="class-body">
+                        <h3>Space Explorers</h3>
+                        <div class="class-meta">
+                            <span>Ages 9-13</span>
+                            <span>5 weeks</span>
+                            <span>Beginner</span>
+                        </div>
+                        <p class="class-description">Discover planets, stars, and the mysteries of our universe.</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">👧</div>
+                            <div>
+                                <strong>Taught by Stella, age 13</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.8 (16 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Writing Classes -->
+                <div class="class-card" data-category="writing">
+                    <div class="class-header">📝</div>
+                    <div class="class-body">
+                        <h3>Creative Writing</h3>
+                        <div class="class-meta">
+                            <span>Ages 9-14</span>
+                            <span>6 weeks</span>
+                            <span>All levels</span>
+                        </div>
+                        <p class="class-description">Write amazing stories, poems, and let your imagination run wild!</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">🧑</div>
+                            <div>
+                                <strong>Taught by Olivia, age 14</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.9 (31 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="writing">
+                    <div class="class-header">✍️</div>
+                    <div class="class-body">
+                        <h3>Handwriting & Calligraphy</h3>
+                        <div class="class-meta">
+                            <span>Ages 7-12</span>
+                            <span>4 weeks</span>
+                            <span>Beginner</span>
+                        </div>
+                        <p class="class-description">Improve your handwriting and learn beautiful lettering styles.</p>
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">👧</div>
+                            <div>
+                                <strong>Taught by Mia, age 11</strong>
+                                <p style="font-size: 0.9em;">⭐ 4.7 (14 reviews)</p>
+                            </div>
+                        </div>
+                        <button class="class-btn" onclick="alert('Thanks for your interest! Class sign-up opens soon.')">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html" class="logo" style="color: white; text-decoration: none;">🎓 Kids-Teach-Kids</a>
+        <p>Empowering the next generation through peer learning</p>
+        
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kids-Teach-Kids. All rights reserved.</p>
+    </div>
+
+    <script>
+        function filterClasses(category) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter classes
+            const classes = document.querySelectorAll('.class-card');
+            classes.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Check URL hash on page load
+        window.onload = function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                filterClasses(hash);
+                // Simulate click on correct filter button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if (btn.textContent.toLowerCase() === hash) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+        };
+    </script>
+</body>
+</html>
