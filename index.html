@@ -29,20 +29,29 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            flex-wrap: wrap;
         }
 
         .logo {
             font-size: 1.8em;
             font-weight: bold;
             color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #555;
-            margin-left: 30px;
+            margin-left: 20px;
             font-weight: 500;
             transition: color 0.3s;
+            padding: 5px 0;
         }
 
         .nav-links a:hover {
@@ -155,6 +164,9 @@
             transition: all 0.3s;
             cursor: pointer;
             border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .feature:hover {
@@ -273,6 +285,8 @@
             margin-top: 20px;
             transition: all 0.3s;
             border: 2px solid transparent;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .cta-button:hover {
@@ -292,12 +306,15 @@
 
         .footer-links {
             margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
         .footer-links a {
             color: #4ecdc4;
             text-decoration: none;
-            margin: 0 15px;
             transition: color 0.3s;
         }
 
@@ -353,10 +370,11 @@
 
             .nav-links {
                 margin-top: 15px;
+                justify-content: center;
             }
 
             .nav-links a {
-                margin: 0 10px;
+                margin: 5px 10px;
             }
 
             .header h1 {
@@ -376,13 +394,15 @@
 <body>
     <!-- Navigation Bar -->
     <div class="navbar">
-        <div class="logo">🎓 Kids-Teach-Kids</div>
+        <a href="index.html" class="logo">🎓 Kids-Teach-Kids</a>
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#classes">Classes</a>
-            <a href="#contact">Contact</a>
-            <a href="#join" class="join-btn">Join Now</a>
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+            <a href="join.html" class="join-btn">Join Now</a>
         </div>
     </div>
 
@@ -443,42 +463,42 @@
         <div class="card" id="classes">
             <h2>What We Offer</h2>
             <div class="features">
-                <div class="feature">
+                <a href="classes.html#math" class="feature">
                     <span class="feature-icon">📚</span>
                     <h3>Math</h3>
                     <p>From basic arithmetic to cool math tricks and puzzles</p>
                     <small style="color: #999;">Ages 6-14</small>
-                </div>
-                <div class="feature">
+                </a>
+                <a href="classes.html#art" class="feature">
                     <span class="feature-icon">🎨</span>
                     <h3>Art</h3>
                     <p>Drawing, painting, origami, and creative crafts</p>
                     <small style="color: #999;">Ages 5-16</small>
-                </div>
-                <div class="feature">
+                </a>
+                <a href="classes.html#coding" class="feature">
                     <span class="feature-icon">💻</span>
                     <h3>Coding</h3>
                     <p>Build games, websites, and cool projects</p>
                     <small style="color: #999;">Ages 8-16</small>
-                </div>
-                <div class="feature">
+                </a>
+                <a href="classes.html#music" class="feature">
                     <span class="feature-icon">🎵</span>
                     <h3>Music</h3>
                     <p>Learn instruments, singing, and music theory</p>
                     <small style="color: #999;">Ages 6-16</small>
-                </div>
-                <div class="feature">
+                </a>
+                <a href="classes.html#science" class="feature">
                     <span class="feature-icon">🔬</span>
                     <h3>Science</h3>
                     <p>Fun experiments and science explanations</p>
                     <small style="color: #999;">Ages 7-14</small>
-                </div>
-                <div class="feature">
+                </a>
+                <a href="classes.html#writing" class="feature">
                     <span class="feature-icon">📝</span>
                     <h3>Writing</h3>
                     <p>Creative writing, stories, and poetry</p>
                     <small style="color: #999;">Ages 8-16</small>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -505,25 +525,25 @@
         <div class="cta-section">
             <h2 style="color: white; border-bottom-color: white;">Ready to Start?</h2>
             <p style="font-size: 1.2em; margin: 20px 0;">Join our community of young teachers and learners today!</p>
-            <button class="cta-button" onclick="alert('Thanks for your interest! We\'ll notify you when we launch. Stay tuned!')">
+            <a href="join.html" class="cta-button">
                 Get Notified When We Launch 🚀
-            </button>
+            </a>
             <p style="margin-top: 20px; opacity: 0.9;">👥 500+ kids already interested!</p>
         </div>
     </div>
 
     <!-- Footer -->
     <div class="footer" id="contact">
-        <div class="logo" style="color: white;">🎓 Kids-Teach-Kids</div>
+        <a href="index.html" class="logo" style="color: white; text-decoration: none;">🎓 Kids-Teach-Kids</a>
         <p>Empowering the next generation through peer learning</p>
         
         <div class="footer-links">
-            <a href="#about">About Us</a>
-            <a href="#classes">Classes</a>
-            <a href="#become-teacher">Become a Teacher</a>
-            <a href="#parent-info">Parent Info</a>
-            <a href="#safety">Safety</a>
-            <a href="#contact">Contact</a>
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
         </div>
 
         <div class="social-icons">
@@ -536,5 +556,14 @@
         <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kids-Teach-Kids. All rights reserved.</p>
         <p style="font-size: 0.9em; opacity: 0.5;">Made with ❤️ for young learners everywhere</p>
     </div>
+
+    <script>
+        // Simple alert for social media icons (just for demonstration)
+        document.querySelectorAll('.social-icons span').forEach(icon => {
+            icon.addEventListener('click', () => {
+                alert('Social media links coming soon! Follow us to stay updated.');
+            });
+        });
+    </script>
 </body>
 </html>
