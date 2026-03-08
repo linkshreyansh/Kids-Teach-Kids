@@ -1,1 +1,560 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety - Kids-Teach-Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links .join-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4ecdc4;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #4ecdc4;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .safety-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .safety-badge {
+            background: #f0f8ff;
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .safety-badge:hover {
+            background: #ff6b6b;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .safety-badge span {
+            font-size: 1.5em;
+        }
+
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .safety-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .safety-item:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b6b;
+        }
+
+        .safety-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .safety-item h3 {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .safety-item p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .safety-item ul {
+            text-align: left;
+            color: #666;
+            margin-left: 20px;
+        }
+
+        .safety-item li {
+            margin-bottom: 8px;
+        }
+
+        .policy-section {
+            background: #f0f8ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .policy-section h3 {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .policy-section ul {
+            color: #555;
+            margin-left: 20px;
+        }
+
+        .policy-section li {
+            margin-bottom: 12px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .checklist-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #ff6b6b;
+        }
+
+        .checklist-item label {
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                margin: 5px 10px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="logo">🎓 Kids-Teach-Kids</a>
+        <div class="nav-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+            <a href="join.html" class="join-btn">Join Now</a>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Safety First</h1>
+        <p>Your child's safety is our number one priority</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Our Safety Promise</h2>
+            <div class="safety-badge-container">
+                <div class="safety-badge"><span>🔒</span> COPPA Compliant</div>
+                <div class="safety-badge"><span>👀</span> Monitored Sessions</div>
+                <div class="safety-badge"><span>📹</span> Recorded Classes</div>
+                <div class="safety-badge"><span>🔍</span> Background Checks</div>
+                <div class="safety-badge"><span>📱</span> Parent Dashboard</div>
+                <div class="safety-badge"><span>🚨</span> 24/7 Support</div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Safe Classes Held</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Vetted Teachers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Monitoring</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Happy Families</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Safety Measures</h2>
+            <div class="safety-grid">
+                <div class="safety-item">
+                    <span class="safety-icon">🛡️</span>
+                    <h3>Teacher Vetting</h3>
+                    <ul>
+                        <li>Parent permission required for all teachers</li>
+                        <li>Interview with our team</li>
+                        <li>Knowledge assessment</li>
+                        <li>Teaching skills evaluation</li>
+                        <li>Ongoing performance monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="safety-item">
+                    <span class="safety-icon">👨‍👩‍👧</span>
+                    <h3>Parent Involvement</h3>
+                    <ul>
+                        <li>Parents must approve all classes</li>
+                        <li>Access to session recordings</li>
+                        <li>Monthly progress reports</li>
+                        <li>Direct line to support team</li>
+                        <li>Parent dashboard access</li>
+                    </ul>
+                </div>
+
+                <div class="safety-item">
+                    <span class="safety-icon">📋</span>
+                    <h3>Session Monitoring</h3>
+                    <ul>
+                        <li>Adult monitors in every session</li>
+                        <li>All sessions recorded</li>
+                        <li>Real-time chat monitoring</li>
+                        <li>Automated safety alerts</li>
+                        <li>24/7 review team</li>
+                    </ul>
+                </div>
+
+                <div class="safety-item">
+                    <span class="safety-icon">🔐</span>
+                    <h3>Privacy Protection</h3>
+                    <ul>
+                        <li>COPPA compliant</li>
+                        <li>No personal info shared</li>
+                        <li>Secure platform</li>
+                        <li>Parent-controlled accounts</li>
+                        <li>Data encryption</li>
+                    </ul>
+                </div>
+
+                <div class="safety-item">
+                    <span class="safety-icon">🚫</span>
+                    <h3>Code of Conduct</h3>
+                    <ul>
+                        <li>Zero tolerance for bullying</li>
+                        <li>Respectful communication only</li>
+                        <li>Clear behavior guidelines</li>
+                        <li>Immediate action on violations</li>
+                        <li>Parent notification system</li>
+                    </ul>
+                </div>
+
+                <div class="safety-item">
+                    <span class="safety-icon">📞</span>
+                    <h3>Emergency Support</h3>
+                    <ul>
+                        <li>24/7 emergency hotline</li>
+                        <li>Immediate session termination</li>
+                        <li>Direct parent contact</li>
+                        <li>Law enforcement liaison</li>
+                        <li>Crisis response team</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Safety Policies</h2>
+            
+            <div class="policy-section">
+                <h3>📜 Teacher Code of Conduct</h3>
+                <ul>
+                    <li><strong>Be Respectful:</strong> Treat all learners with kindness and patience</li>
+                    <li><strong>Stay Professional:</strong> Keep conversations focused on learning</li>
+                    <li><strong>No Private Contact:</strong> All communication must happen on our platform</li>
+                    <li><strong>Follow Curriculum:</strong> Teach approved content only</li>
+                    <li><strong>Report Concerns:</strong> Immediately report any safety issues</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h3>📜 Learner Guidelines</h3>
+                <ul>
+                    <li><strong>Be Kind:</strong> Treat teachers and classmates with respect</li>
+                    <li><strong>Stay Engaged:</strong> Participate positively in class</li>
+                    <li><strong>Ask Questions:</strong> It's okay to ask for help</li>
+                    <li><strong>No Inappropriate Behavior:</strong> Follow the rules</li>
+                    <li><strong>Tell a Parent:</strong> Report any concerns immediately</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h3>📜 Parent Responsibilities</h3>
+                <ul>
+                    <li><strong>Supervise:</strong> Be aware of your child's online activities</li>
+                    <li><strong>Review:</strong> Check session recordings regularly</li>
+                    <li><strong>Communicate:</strong> Talk with your child about their classes</li>
+                    <li><strong>Report:</strong> Contact us immediately with any concerns</li>
+                    <li><strong>Stay Updated:</strong> Keep your contact information current</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Parent Safety Checklist</h2>
+            <p style="margin-bottom: 20px;">Use this checklist to ensure a safe experience:</p>
+            
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Review teacher profiles before class</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">Watch session recordings with your child</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Discuss online safety rules</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Set up parent dashboard access</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Save emergency contact numbers</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">Review monthly progress reports</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Frequently Asked Safety Questions</h2>
+            
+            <div class="policy-section" style="margin-bottom: 15px;">
+                <h3 style="font-size: 1.3em;">🔍 How do you vet teachers?</h3>
+                <p>All teachers must have parent permission, complete an interview, and demonstrate their knowledge. We also monitor their first few classes closely.</p>
+            </div>
+
+            <div class="policy-section" style="margin-bottom: 15px;">
+                <h3 style="font-size: 1.3em;">👀 Are classes really monitored?</h3>
+                <p>Yes! Every live session has an adult monitor present. All sessions are recorded and available for parents to review.</p>
+            </div>
+
+            <div class="policy-section" style="margin-bottom: 15px;">
+                <h3 style="font-size: 1.3em;">📱 What if I see something concerning?</h3>
+                <p>Contact us immediately through our 24/7 emergency line. We have protocols in place to handle any situation.</p>
+            </div>
+
+            <div class="policy-section" style="margin-bottom: 15px;">
+                <h3 style="font-size: 1.3em;">🔒 How do you protect my child's privacy?</h3>
+                <p>We are COPPA compliant. We never share personal information and all data is encrypted. Parents control their child's account.</p>
+            </div>
+        </div>
+
+        <div class="card" style="text-align: center;">
+            <h2>Have More Questions?</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">Our safety team is here 24/7 to help!</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" style="background: #ff6b6b; color: white; text-decoration: none; padding: 15px 30px; border-radius: 25px;">Contact Safety Team</a>
+                <a href="parent-info.html" style="background: #4ecdc4; color: white; text-decoration: none; padding: 15px 30px; border-radius: 25px;">Parent Resources</a>
+            </div>
+            <p style="margin-top: 30px; color: #666;">Emergency: safety@kids-teach-kids.com | 24/7 Hotline: 1-800-KTK-SAFE</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html" class="logo" style="color: white; text-decoration: none;">🎓 Kids-Teach-Kids</a>
+        <p>Empowering the next generation through peer learning</p>
+        
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kids-Teach-Kids. All rights reserved.</p>
+        <p style="font-size: 0.9em; opacity: 0.5;">Made with ❤️ for young learners everywhere</p>
+    </div>
+</body>
+</html>
