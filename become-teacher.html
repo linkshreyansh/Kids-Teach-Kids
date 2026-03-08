@@ -1,12 +1,533 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Become a Teacher</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Teacher - Kids-Teach-Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links .join-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .nav-links .join-btn:hover {
+            background: #ff5252;
+            color: white;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4ecdc4;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #4ecdc4;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .info-box {
+            background: #f0f8ff;
+            border-left: 5px solid #ff6b6b;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .info-box ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .info-box li {
+            margin-bottom: 10px;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .requirement {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .requirement:hover {
+            transform: translateY(-5px);
+        }
+
+        .requirement-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .requirement h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        .submit-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #ff5252;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4em;
+            color: #ff6b6b;
+            opacity: 0.2;
+            position: absolute;
+            top: -5px;
+            left: 10px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            color: #555;
+        }
+
+        .testimonial-author {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #4ecdc4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                margin: 5px 10px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body style="font-family: Arial; text-align: center; padding: 50px;">
-    <h1 style="color: #ff6b6b;">Become a Teacher</h1>
-    <p>This page is working!</p>
-    <a href="index.html" style="color: blue;">Back to Home</a>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="logo">🎓 Kids-Teach-Kids</a>
+        <div class="nav-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+            <a href="join.html" class="join-btn">Join Now</a>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Become a Teacher</h1>
+        <p>Share what you love with other kids! 🌟</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Why Become a Teacher?</h2>
+            <div class="requirements-grid">
+                <div class="requirement">
+                    <span class="requirement-icon">💪</span>
+                    <h4>Build Confidence</h4>
+                    <p>Teaching helps you become more confident and improve public speaking</p>
+                </div>
+                <div class="requirement">
+                    <span class="requirement-icon">🧠</span>
+                    <h4>Deepen Knowledge</h4>
+                    <p>The best way to learn something is to teach it!</p>
+                </div>
+                <div class="requirement">
+                    <span class="requirement-icon">⭐</span>
+                    <h4>Earn Recognition</h4>
+                    <p>Get badges, certificates, and special perks</p>
+                </div>
+                <div class="requirement">
+                    <span class="requirement-icon">🤝</span>
+                    <h4>Make Friends</h4>
+                    <p>Connect with other kids who share your interests</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>📋 Requirements</h3>
+                <ul>
+                    <li><strong>Age:</strong> Must be between 10-17 years old</li>
+                    <li><strong>Parent Permission:</strong> A parent or guardian must approve your application</li>
+                    <li><strong>Subject Knowledge:</strong> You should be really good at what you want to teach</li>
+                    <li><strong>Patience:</strong> Teaching requires being kind and patient with learners</li>
+                    <li><strong>Reliability:</strong> You must commit to your scheduled classes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Teacher Application</h2>
+            
+            <form id="teacherForm" onsubmit="event.preventDefault(); alert('Thanks for applying! A parent will need to complete verification. We\'ll contact you soon!'); this.reset();">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your First Name *</label>
+                        <input type="text" required placeholder="Enter your first name">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Last Name *</label>
+                        <input type="text" required placeholder="Enter your last name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Age *</label>
+                        <input type="number" min="10" max="17" required placeholder="10-17">
+                    </div>
+                    <div class="form-group">
+                        <label>Grade Level *</label>
+                        <select required>
+                            <option value="">Select grade</option>
+                            <option>4th grade</option>
+                            <option>5th grade</option>
+                            <option>6th grade</option>
+                            <option>7th grade</option>
+                            <option>8th grade</option>
+                            <option>9th grade</option>
+                            <option>10th grade</option>
+                            <option>11th grade</option>
+                            <option>12th grade</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Parent/Guardian Full Name *</label>
+                    <input type="text" required placeholder="Enter parent's full name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Parent Email *</label>
+                        <input type="email" required placeholder="parent@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Parent Phone *</label>
+                        <input type="tel" required placeholder="(555) 123-4567">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>What subject do you want to teach? *</label>
+                    <select required>
+                        <option value="">Select a subject</option>
+                        <option>Math</option>
+                        <option>Art</option>
+                        <option>Coding</option>
+                        <option>Music</option>
+                        <option>Science</option>
+                        <option>Writing</option>
+                        <option>Foreign Language</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Why do you want to teach this subject? *</label>
+                    <textarea rows="4" required placeholder="Tell us why you love this subject and why you'd be a great teacher..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>How long have you been learning/practicing this subject? *</label>
+                    <select required>
+                        <option value="">Select experience</option>
+                        <option>Less than 6 months</option>
+                        <option>6 months - 1 year</option>
+                        <option>1-2 years</option>
+                        <option>2-3 years</option>
+                        <option>3+ years</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>What age group do you want to teach? *</label>
+                    <select required>
+                        <option value="">Select age group</option>
+                        <option>5-7 years old</option>
+                        <option>8-10 years old</option>
+                        <option>11-13 years old</option>
+                        <option>14-16 years old</option>
+                        <option>Any age group</option>
+                    </select>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="parentPermission" required>
+                    <label for="parentPermission">I have discussed this with my parent/guardian and they approve *</label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to follow the Kids-Teach-Kids safety guidelines and code of conduct *</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Application 🚀</button>
+            </form>
+
+            <p style="margin-top: 20px; color: #666; font-size: 0.9em; text-align: center;">* After submitting, a parent will need to complete a quick verification call with our team.</p>
+        </div>
+
+        <div class="card">
+            <h2>What Our Teachers Say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>Teaching math to younger kids has been so rewarding. I feel more confident and I've made great friends!</p>
+                    <div class="testimonial-author">- Emma, age 14 (Math teacher)</div>
+                </div>
+                <div class="testimonial">
+                    <p>I love sharing my art skills. Seeing my students create something beautiful makes me so happy!</p>
+                    <div class="testimonial-author">- Jayden, age 13 (Art teacher)</div>
+                </div>
+                <div class="testimonial">
+                    <p>Teaching coding helps me understand it better too. It's a win-win!</p>
+                    <div class="testimonial-author">- Maya, age 15 (Coding teacher)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html" class="logo" style="color: white; text-decoration: none;">🎓 Kids-Teach-Kids</a>
+        <p>Empowering the next generation through peer learning</p>
+        
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="become-teacher.html">Become a Teacher</a>
+            <a href="parent-info.html">Parent Info</a>
+            <a href="safety.html">Safety</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kids-Teach-Kids. All rights reserved.</p>
+        <p style="font-size: 0.9em; opacity: 0.5;">Made with ❤️ for young learners everywhere</p>
+    </div>
 </body>
 </html>
