@@ -1,10 +1,540 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Kids-Teach-Kids</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids-Teach-Kids - Learning from Young Minds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: white;
+            padding: 20px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links .join-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .nav-links .join-btn:hover {
+            background: #ff5252;
+            color: white;
+        }
+
+        /* Header/Hero Section */
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header h1 {
+            font-size: 4.5em;
+            margin: 0;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            animation: fadeInDown 1s ease;
+        }
+
+        .header p {
+            font-size: 1.5em;
+            margin-top: 20px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: -50px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #4ecdc4;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #4ecdc4;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .mission {
+            font-size: 1.3em;
+            color: #555;
+        }
+
+        .mission p {
+            margin: 20px 0;
+        }
+
+        .highlight {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ff6b6b;
+            margin: 20px 0;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b6b;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature h3 {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            background: #ff6b6b;
+            color: white;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h4 {
+            color: #4ecdc4;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4em;
+            color: #ff6b6b;
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .testimonial-role {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7aa 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #4ecdc4;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+            font-size: 1.5em;
+        }
+
+        .social-icons span {
+            margin: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .social-icons span:hover {
+            color: #ff6b6b;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+            }
+
+            .nav-links a {
+                margin: 0 10px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .header p {
+                font-size: 1.2em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Test Page - Kids-Teach-Kids</h1>
-    <p>If you can see this, the site works!</p>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">🎓 Kids-Teach-Kids</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#classes">Classes</a>
+            <a href="#contact">Contact</a>
+            <a href="#join" class="join-btn">Join Now</a>
+        </div>
+    </div>
+
+    <!-- Header/Hero Section -->
+    <div class="header" id="home">
+        <h1>🎓 Kids-Teach-Kids</h1>
+        <p>Where young minds inspire young minds!</p>
+        <div class="subtitle">🌟 Learn from peers who speak your language 🌟</div>
+    </div>
+
+    <div class="container">
+        <!-- Mission Card -->
+        <div class="card" id="about">
+            <h2>Our Mission</h2>
+            <div class="mission">
+                <p>We believe that every child has something valuable to teach. Our platform connects young learners with peer teachers who make learning fun, relatable, and exciting!</p>
+                
+                <div class="highlight">
+                    <strong>✨ Why Kids Teaching Kids?</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Kids explain things in simple, relatable ways</li>
+                        <li>Builds confidence in both teachers and learners</li>
+                        <li>Creates a fun, pressure-free learning environment</li>
+                        <li>Develops leadership and communication skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Card -->
+        <div class="card">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Sign Up</h4>
+                    <p>Create your profile as a learner or teacher (with parent permission)</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Choose</h4>
+                    <p>Pick a subject you want to learn or teach</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Connect</h4>
+                    <p>Join live sessions with peer teachers</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Learn & Grow</h4>
+                    <p>Have fun while learning new skills!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- What We Offer Card -->
+        <div class="card" id="classes">
+            <h2>What We Offer</h2>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">📚</span>
+                    <h3>Math</h3>
+                    <p>From basic arithmetic to cool math tricks and puzzles</p>
+                    <small style="color: #999;">Ages 6-14</small>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Art</h3>
+                    <p>Drawing, painting, origami, and creative crafts</p>
+                    <small style="color: #999;">Ages 5-16</small>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">💻</span>
+                    <h3>Coding</h3>
+                    <p>Build games, websites, and cool projects</p>
+                    <small style="color: #999;">Ages 8-16</small>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎵</span>
+                    <h3>Music</h3>
+                    <p>Learn instruments, singing, and music theory</p>
+                    <small style="color: #999;">Ages 6-16</small>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🔬</span>
+                    <h3>Science</h3>
+                    <p>Fun experiments and science explanations</p>
+                    <small style="color: #999;">Ages 7-14</small>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📝</span>
+                    <h3>Writing</h3>
+                    <p>Creative writing, stories, and poetry</p>
+                    <small style="color: #999;">Ages 8-16</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Card -->
+        <div class="card">
+            <h2>What Parents & Kids Say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>My daughter used to struggle with math, but learning from a slightly older kid made it click! Now she loves it.</p>
+                    <div class="testimonial-author">- Sarah, Parent</div>
+                </div>
+                <div class="testimonial">
+                    <p>Teaching coding to younger kids has been amazing. It helps me understand things better too!</p>
+                    <div class="testimonial-author">- Alex, age 14 (Teacher)</div>
+                </div>
+                <div class="testimonial">
+                    <p>I learned to draw anime in just 4 sessions! My teacher is so cool and patient.</p>
+                    <div class="testimonial-author">- Maya, age 10 (Learner)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2 style="color: white; border-bottom-color: white;">Ready to Start?</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">Join our community of young teachers and learners today!</p>
+            <button class="cta-button" onclick="alert('Thanks for your interest! We\'ll notify you when we launch. Stay tuned!')">
+                Get Notified When We Launch 🚀
+            </button>
+            <p style="margin-top: 20px; opacity: 0.9;">👥 500+ kids already interested!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer" id="contact">
+        <div class="logo" style="color: white;">🎓 Kids-Teach-Kids</div>
+        <p>Empowering the next generation through peer learning</p>
+        
+        <div class="footer-links">
+            <a href="#about">About Us</a>
+            <a href="#classes">Classes</a>
+            <a href="#become-teacher">Become a Teacher</a>
+            <a href="#parent-info">Parent Info</a>
+            <a href="#safety">Safety</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="social-icons">
+            <span>📘</span>
+            <span>📷</span>
+            <span>🐦</span>
+            <span>🎵</span>
+        </div>
+
+        <p style="margin-top: 20px; opacity: 0.7;">© 2026 Kids-Teach-Kids. All rights reserved.</p>
+        <p style="font-size: 0.9em; opacity: 0.5;">Made with ❤️ for young learners everywhere</p>
+    </div>
 </body>
 </html>
